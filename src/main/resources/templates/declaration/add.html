@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/home">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout declaration</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">ACCUEIL</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/declarants">DECLARANT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="declarations">DECLARATION</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/paiements">PAIEMENT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="p-2 bg-light text-dark text-center">
+    <h1>GESTION DES IMPOTS</h1>
+</div>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Créer une nouvelle declaration </h1>
+            <div class = "card-body">
+                <form th:action="@{/declarations}" th:object ="${declaration}" method="POST">
+                    <div class ="form-group">
+                        <label> date Declaration  </label>
+                        <input
+                                type = "date"
+                                id = "dateDeclaration"
+                                th:field = "*{dateDeclaration}"
+                                class = "form-control"
+                                placeholder="Enter date Declaration"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> montant Declaration  </label>
+                        <input
+                                type = "text"
+                                id = "montantDeclaration"
+                                th:field = "*{montantDeclaration}"
+                                class = "form-control"
+                                placeholder="Enter montant Declaration"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <select id="declarant" class="form-control" th:field="*{declarant}">
+                            <option value="0" selected disabled>--- Selectionner un declarant ---</option>
+                            <option th:each="declarant : ${declarants}"
+                                    th:value="${declarant.id}"
+                                    th:text="${declarant.raisonSociale}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
