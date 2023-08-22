@@ -18,26 +18,31 @@ public class DeclarantServiceImpl implements DeclarantService {
 
     @Override
     public List<Declarant> getAllDeclarants() {
+
         return declarantRepository.findAll();
     }
 
     @Override
     public Declarant saveDeclarant(Declarant declarant) {
+
         return declarantRepository.save(declarant);
     }
 
     @Override
     public Declarant getDeclarantById(Long id) {
+
         return declarantRepository.findById(id).get();
     }
 
     @Override
     public Declarant updateDeclarant(Declarant declarant) {
+
         return declarantRepository.save(declarant);
     }
 
     @Override
     public void deleteDeclarantById(Long id) {
+
         declarantRepository.deleteById(id);
     }
 }
