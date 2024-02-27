@@ -37,7 +37,7 @@ public class PaiementController {
     @PostMapping("/paiements")
     public String savePaiement(@ModelAttribute("paiement") Paiement paiement) {
         paiementService.savePaiement(paiement);
-        return "redirect:/paiements";
+        return "redirect:/paiement/paiements";
     }
 
     @GetMapping("/paiements/edit/{id}")
@@ -60,7 +60,7 @@ public class PaiementController {
 
         // save updated paiement object
         paiementService.updatePaiement(existingPaiement);
-        return "redirect:/paiements";
+        return "redirect:/paiement/paiements";
     }
 
     // handler method to handle delete paiement request
@@ -68,6 +68,6 @@ public class PaiementController {
     @GetMapping("/paiements/{id}")
     public String deletePaiement(@PathVariable Long id) {
         paiementService.deletePaiementById(id);
-        return "redirect:/paiements";
+        return "redirect:/paiement/paiements";
     }
 }

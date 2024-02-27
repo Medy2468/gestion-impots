@@ -24,7 +24,7 @@ public class DeclarationController {
     @PostMapping("/declarations")
     public String saveDeclaration(@ModelAttribute("declarations") Declaration declaration) {
         declarationService.saveDeclaration(declaration);
-        return "redirect:/declarations";
+        return "redirect:/declaration/declarations";
     }
 
     // handler method to handle list declarations and return mode and view
@@ -65,7 +65,7 @@ public class DeclarationController {
 
         // save updated student object
         declarationService.updateDeclaration(existingDeclaration);
-        return "redirect:/declarations";
+        return "redirect:/declaration/declarations";
     }
 
 
@@ -76,7 +76,7 @@ public class DeclarationController {
     @GetMapping("/declarations/{id}")
     public String deleteDeclaration(@PathVariable Long id) {
         declarationService.deleteDeclarationById(id);
-        return "redirect:/declarations";
+        return "redirect:/declaration/declarations";
     }
 
 }

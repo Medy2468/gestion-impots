@@ -15,6 +15,8 @@
 	<description>Ce système va permettre de mettre aux usagers d'effectuer les paiements de leurs impôts</description>
 	<properties>
 		<java.version>17</java.version>
+		<docker.user/>
+		<docker.token/>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -74,6 +76,16 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<image>
+					<name>medy2468/${project.artifactId}:${project.version}</name>
+				</image>
+				<docker>
+					<publishRegistry>
+						<username>${docker.user}</username>
+						<password>${docker.token}</password>
+						<url>https://index.docker.io/v1</url>
+					</publishRegistry>
+				</docker>
 				</configuration>
 			</plugin>
 		</plugins>
